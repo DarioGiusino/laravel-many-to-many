@@ -12,7 +12,7 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        //! TypeSeeder must be after ProjectSeeder. Otherwise the db will crash cause based on seeder fullfill
-        $this->call([TypeSeeder::class, ProjectSeeder::class, UserSeeder::class]);
+        //! TypeSeeder must be before ProjectSeeder. Otherwise the db will crash cause based on seeder fullfill
+        $this->call([TypeSeeder::class, TechnologySeeder::class, ProjectSeeder::class, UserSeeder::class]);
     }
 }
