@@ -70,12 +70,10 @@
         rows="10" required>{{ old('description', $project->description) }}</textarea>
     </div>
   </div>
-</div>
 
-{{-- type select --}}
-{{-- !! the name must be the same on projects table (type_id) --}}
-<div class="col-3">
-  <div class="mb-3">
+  {{-- type select --}}
+  {{-- !! the name must be the same on projects table (type_id) --}}
+  <div class="col-3 mb-3">
     <label for="type_id" class="form-label">Type</label>
     <select class="form-select @error('type_id') is-invalid @enderror" id="type_id" name="type_id">
       <option value="">None</option>
@@ -91,7 +89,17 @@
       <div class="form-text">Select a project type</div>
     @enderror
   </div>
+
+  {{-- technologies checkboxes --}}
+  <div class="col-6 d-flex align-items-center ms-5">
+    <div class="form-check form-check-inline">
+      <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
+      <label class="form-check-label" for="inlineCheckbox1"></label>
+    </div>
+  </div>
 </div>
+
+
 
 <hr>
 
