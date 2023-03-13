@@ -120,7 +120,7 @@ class TechnologyController extends Controller
     {
         $data = $request->all();
 
-        $technology->patch($data);
+        $technology->update($data);
 
         return to_route('admin.technologies.index');
     }

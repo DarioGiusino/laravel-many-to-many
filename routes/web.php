@@ -2,7 +2,7 @@
 
 use App\Http\Controllers\admin\HomeController as AdminHomeController;
 use App\Http\Controllers\admin\ProjectController;
-use App\Http\Controllers\Admin\TechnologyController;
+use App\Http\Controllers\admin\TechnologyController;
 use App\Http\Controllers\admin\TypeController;
 use App\Http\Controllers\guest\HomeController as GuestHomeController;
 use App\Http\Controllers\ProfileController;
@@ -29,7 +29,7 @@ Route::middleware('auth')->name('admin.')->prefix('/admin')->group(function () {
     Route::resource('types', TypeController::class);
     Route::patch('types/{type}/patch', [TypeController::class, 'patch'])->name('types.patch');
     Route::resource('technologies', TechnologyController::class);
-    Route::patch('technologies/{technology}/patch', [TypeController::class, 'patch'])->name('technologies.patch');
+    Route::patch('technologies/{technology}/patch', [TechnologyController::class, 'patch'])->name('technologies.patch');
 });
 
 
