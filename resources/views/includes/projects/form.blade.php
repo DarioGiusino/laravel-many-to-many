@@ -94,8 +94,9 @@
   <div class="col-6 d-flex align-items-center ms-5">
     @foreach ($technologies as $technology)
       <div class="form-check form-check-inline">
-        <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
-        <label class="form-check-label" for="inlineCheckbox1"><span class="badge rounded-pill"
+        <input class="form-check-input" type="checkbox" id="tech-{{ $technology->label }}"
+          value="{{ $technology->id }}" name="technologies[]" @checked(in_array($technology->id, old('technologies', [])))>
+        <label class="form-check-label" for="tech-{{ $technology->label }}"><span class="badge rounded-pill"
             style="background-color:{{ $technology->color }}">{{ $technology->label }}</span></label>
       </div>
     @endforeach
