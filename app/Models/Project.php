@@ -20,6 +20,6 @@ class Project extends Model
     // link to pivot table
     public function technologies()
     {
-        $this->belongsToMany(Technology::class);
+        return $this->belongsToMany(Technology::class);
     }
 }
