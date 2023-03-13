@@ -45,18 +45,26 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <!-- Left Side Of Navbar -->
           <ul class="navbar-nav me-auto">
+            {{-- home link --}}
             <li class="nav-item">
               <a class="nav-link @if (Route::is('guest.home')) active @endif"
                 href="{{ url('/') }}">{{ __('Home') }}</a>
             </li>
             @auth
+              {{-- projects link --}}
               <li class="nav-item">
                 <a class="nav-link @if (request()->routeis('admin.projects*')) active @endif"
                   href="{{ route('admin.projects.index') }}">{{ __('Projects') }}</a>
               </li>
+              {{-- types link --}}
               <li class="nav-item">
                 <a class="nav-link @if (request()->routeis('admin.types*')) active @endif"
                   href="{{ route('admin.types.index') }}">{{ __('Types') }}</a>
+              </li>
+              {{-- technologies link --}}
+              <li class="nav-item">
+                <a class="nav-link @if (request()->routeis('admin.technologies*')) active @endif"
+                  href="{{ route('admin.technologies.index') }}">{{ __('Technologies') }}</a>
               </li>
             @endauth
           </ul>
