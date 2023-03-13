@@ -196,6 +196,8 @@ class ProjectController extends Controller
         // if exists an image, delete it to make space for the newest
         if ($project->image) Storage::delete($project->image);
 
+        if (count($project->technologies)) $project->technologies()->detach();
+
         $project->delete();
 
         return to_route('admin.projects.index')->with('message', "$project->title deleted succesfully.")->with('type', 'danger');;
