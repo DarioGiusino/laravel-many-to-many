@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\Project;
+use App\Models\Technology;
 use App\Models\Type;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
@@ -19,6 +20,8 @@ class ProjectSeeder extends Seeder
         //types count selected by id, retrieved for all the values in the id column(pluck), and transformed in array
         $types_count = Type::select('id')->pluck('id')->toArray();
 
+        $technologies = Technology::select('id')->pluck('id')->toArray();
+
         for ($i = 0; $i < 8; $i++) {
             // create new istance
             $project = new Project();
@@ -34,6 +37,15 @@ class ProjectSeeder extends Seeder
 
             // fill row
             $project->save();
+
+            // add random technologies
+            $random_ids = [];
+
+            foreach ($technologies as $technology) {
+                if ($faker->boolean()) $random_ids[] = $technology;
+            }
+
+            $project->technologies()->attach($random_ids);
         }
     }
 }
