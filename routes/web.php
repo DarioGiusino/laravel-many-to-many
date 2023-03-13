@@ -27,6 +27,7 @@ Route::middleware('auth')->name('admin.')->prefix('/admin')->group(function () {
     Route::resource('projects', ProjectController::class);
     Route::resource('types', TypeController::class);
     Route::patch('types/{type}/patch', [TypeController::class, 'patch'])->name('types.patch');
+    Route::resource('technologies', TechnologyController::class);
 });
 
 
