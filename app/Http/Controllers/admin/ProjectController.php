@@ -146,7 +146,8 @@ class ProjectController extends Controller
                 'description' => 'required|string',
                 'image' => 'nullable|image|mimes:png,jpeg,jpg',
                 'repo_link' => 'nullable|url',
-                'type' => 'nullable|exists:types,id'
+                'type' => 'nullable|exists:types,id',
+                'technologies' => 'nullable|exists:technologies,id'
             ],
             [
                 'title.required' => 'A title must be given',
@@ -158,7 +159,8 @@ class ProjectController extends Controller
                 'image.image' => 'Please, give an image file',
                 'image.mimes' => 'Only jpeg, jpg and png file supported',
                 'repo_link.url' => 'Please, give a valid URL',
-                'type' => 'This type is not valid'
+                'type' => 'This type is not valid',
+                'technologies' => 'Technology/ies is not valid.'
             ]
         );
 
@@ -178,6 +180,10 @@ class ProjectController extends Controller
         $data['is_published'] = Arr::exists($data, 'is_published');
 
         $project->update($data);
+
+        // if technologies are given, add to the proejct
+        if (Arr::exists($data, 'technologies')) $project->technologies()->sync($data['technologies']);
+        else $project->technologies()->detach();
 
         return to_route('admin.projects.show', $project->id)->with('message', "$project->title updated succesfully.")->with('type', 'warning');;
     }
