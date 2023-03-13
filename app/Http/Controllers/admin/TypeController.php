@@ -101,7 +101,7 @@ class TypeController extends Controller
         $type->update($data);
 
         // redirect to index
-        return to_route('admin.types.index')->with('message', "$type->label created succesfully.")->with('type', 'warning');
+        return to_route('admin.types.index')->with('message', "$type->label updated succesfully.")->with('type', 'warning');
     }
 
     /**
@@ -123,6 +123,6 @@ class TypeController extends Controller
 
         $type->update($data);
 
-        return to_route('admin.types.index');
+        return to_route('admin.types.index')->with('message', "$type->label updated succesfully.")->with('type', 'warning');;
     }
 }

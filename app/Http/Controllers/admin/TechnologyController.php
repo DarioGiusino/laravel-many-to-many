@@ -122,6 +122,6 @@ class TechnologyController extends Controller
 
         $technology->update($data);
 
-        return to_route('admin.technologies.index');
+        return to_route('admin.technologies.index')->with('message', "$technology->label updated succesfully.")->with('type', 'warning');;
     }
 }
