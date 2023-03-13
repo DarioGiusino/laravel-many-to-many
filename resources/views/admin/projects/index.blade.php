@@ -40,6 +40,7 @@
           <th scope="col">ID</th>
           <th scope="col">Title</th>
           <th scope="col">Type</th>
+          <th scope="col">Technologies</th>
           <th scope="col">Status</th>
           <th scope="col" class="text-end">Commands</th>
         </tr>
@@ -63,6 +64,16 @@
                   -
                 @endif
               </span>
+            </td>
+
+            {{-- project technologies --}}
+            <td>
+              @forelse ($project->technologies as $technology)
+                <span class="badge rounded-pill"
+                  style="background-color:{{ $technology->color }}">{{ $technology->label }}</span>
+              @empty
+                -
+              @endforelse
             </td>
 
             {{-- project status --}}
