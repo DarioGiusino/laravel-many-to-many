@@ -100,7 +100,7 @@ class TechnologyController extends Controller
         $technology->update($data);
 
         // redirect to index
-        return to_route('admin.technologies.index')->with('message', "$technology->label created succesfully.")->with('type', 'warning');
+        return to_route('admin.technologies.index')->with('message', "$technology->label updated succesfully.")->with('type', 'warning');
     }
 
     /**
@@ -110,7 +110,7 @@ class TechnologyController extends Controller
     {
         $technology->delete();
 
-        return to_route('admin.technologies.index')->with('message', "$technology->title deleted succesfully.")->with('type', 'danger');;
+        return to_route('admin.technologies.index')->with('message', "$technology->label deleted succesfully.")->with('type', 'danger');;
     }
 
     /**
@@ -120,7 +120,7 @@ class TechnologyController extends Controller
     {
         $data = $request->all();
 
-        $technology->update($data);
+        $technology->patch($data);
 
         return to_route('admin.technologies.index');
     }
