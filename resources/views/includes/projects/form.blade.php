@@ -92,10 +92,13 @@
 
   {{-- technologies checkboxes --}}
   <div class="col-6 d-flex align-items-center ms-5">
-    <div class="form-check form-check-inline">
-      <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
-      <label class="form-check-label" for="inlineCheckbox1"></label>
-    </div>
+    @foreach ($technologies as $technology)
+      <div class="form-check form-check-inline">
+        <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
+        <label class="form-check-label" for="inlineCheckbox1"><span class="badge rounded-pill"
+            style="background-color:{{ $technology->color }}">{{ $technology->label }}</span></label>
+      </div>
+    @endforeach
   </div>
 </div>
 
